@@ -7,6 +7,8 @@ interface InputFieldProps {
   id: string
   name: string
   required?: boolean
+  minLength?: number
+  maxLength?: number
   className?: string
   labelClassName?: string
   inputClassName?: string
@@ -22,6 +24,8 @@ const InputField = ({
   className = '',
   labelClassName = '',
   inputClassName = '',
+  minLength = 6,
+  maxLength = 200,
   error = '',
 }: InputFieldProps) => {
   return (
@@ -35,8 +39,10 @@ const InputField = ({
         type={type}
         required={required}
         className={`${inputClassName}`}
+        minLength={minLength}
+        maxLength={maxLength}
       ></Input>
-      <p className="my-1 text-xs text-red-800">{error}</p>
+      <p className="my-1 text-xs text-red-500">{error}</p>
     </div>
   )
 }
