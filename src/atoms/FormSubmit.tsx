@@ -26,7 +26,7 @@ const FormSubmit = ({
 }: FormSubmitProps) => {
   const { pending } = useFormStatus()
   return (
-    <Button variant={variant} className={`${className}`}>
+    <Button variant={variant} className={`${className}`} type="submit">
       {pending ? <LoadingSpinner currentColor={spinnerColor} /> : text}
     </Button>
   )
