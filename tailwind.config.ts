@@ -13,13 +13,16 @@ const config: Config = {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-        'main-bg': 'url(/bg-1.jpg)',
+        'main-bg': 'url(/bg.jpg)',
       },
       fontFamily: {
         poppins: 'var(--var-poppins)',
-        'radio-canada': 'var(--var-radio-canada)',
+        playfair: 'var(--var-playfair)',
       },
-      colors: {},
+      colors: {
+        'light-text': '#f9f9f9',
+        navbar: '#111216',
+      },
     },
   },
   plugins: [],

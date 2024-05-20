@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
-import { radio_canada, poppins } from '@/atoms/fonts'
+import { poppins, playfair } from '@/atoms/fonts'
 import './globals.css'
+import Navbar from '@/components/navbar/Navbar'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -13,8 +14,9 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${poppins.variable} ${radio_canada.variable}`}>
-      <body className="font-poppins">
+    <html lang="en" className={`${poppins.variable} ${playfair.variable}`}>
+      <body className="font-poppins relative">
+        <Navbar></Navbar>
         <main className="min-h-screen w-full font-poppins">{children}</main>
       </body>
     </html>

@@ -1,4 +1,4 @@
-import { Radio_Canada, Poppins } from 'next/font/google'
+import { Poppins, Playfair_Display } from 'next/font/google'
 
 export const poppins = Poppins({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
@@ -8,10 +8,10 @@ export const poppins = Poppins({
   preload: false,
 })
 
-export const radio_canada = Radio_Canada({
-  weight: ['300', '400', '500', '600', '700'],
+export const playfair = Playfair_Display({
+  weight: ['400', '500', '600', '700', '800', '900'],
   display: 'swap',
   subsets: ['latin'],
-  variable: '--var-radio-canada',
+  variable: '--var-playfair',
   preload: false,
 })
