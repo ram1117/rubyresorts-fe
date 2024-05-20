@@ -15,8 +15,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${poppins.variable} ${playfair.variable}`}>
-      <body className="font-poppins relative">
-        <Navbar></Navbar>
+      <body className="font-poppins relative bg-main-bg bg-no-repeat bg-cover text-light-text">
+        <Navbar />
         <main className="min-h-screen w-full font-poppins">{children}</main>
       </body>
     </html>

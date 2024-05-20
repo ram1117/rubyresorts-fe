@@ -5,7 +5,6 @@ export const poppins = Poppins({
   display: 'swap',
   subsets: ['latin'],
   variable: '--var-poppins',
-  preload: false,
 })
 
 export const playfair = Playfair_Display({
@@ -13,5 +12,4 @@ export const playfair = Playfair_Display({
   display: 'swap',
   subsets: ['latin'],
   variable: '--var-playfair',
-  preload: false,
 })
