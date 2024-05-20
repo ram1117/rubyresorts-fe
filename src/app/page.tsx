@@ -23,11 +23,9 @@ export default function Home() {
           variant={'outline'}
           className="w-max px-12 my-12 bg-transparent tracking-wider uppercase"
         >
-          <Link href="booking">Check Availability</Link>
+          <Link href="/reserve">Check Availability</Link>
         </Button>
       </section>
-
-      {/* <Availability /> */}
     </main>
   )
 }

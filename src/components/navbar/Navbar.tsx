@@ -32,28 +32,28 @@ const Navbar = () => {
             ></ImageWrapper>
           </button>
         </SheetTrigger>
-        <SheetContent className="z-[999] bg-navbar text-light-text border-none">
+        <SheetContent className="z-[999] bg-card text-light-text border-none">
           <SheetHeader className="flex items-center">
             <h2 className="text-lg font-semibold py-4">Hi User</h2>
           </SheetHeader>
           <ul className="flex flex-col gap-6 py-12">
             <SheetClose asChild>
-              <Link href="rooms" className="border-b border-dotted p-2">
+              <Link href="/rooms" className="border-b border-dotted p-2">
                 Rooms
               </Link>
             </SheetClose>
             <SheetClose asChild>
-              <Link href="bookings" className="border-b border-dotted p-2">
+              <Link href="/bookings" className="border-b border-dotted p-2">
                 Bookings
               </Link>
             </SheetClose>
             <SheetClose asChild>
-              <Link href="bookings" className="border-b border-dotted p-2">
+              <Link href="/bookings" className="border-b border-dotted p-2">
                 Account
               </Link>
             </SheetClose>
             <SheetClose asChild>
-              <Link href="auth/signin" className="border-b border-dotted  p-2">
+              <Link href="/auth/signin" className="border-b border-dotted  p-2">
                 Sign In
               </Link>
             </SheetClose>

@@ -41,7 +41,7 @@ const config = {
       },
       colors: {
         'light-text': '#f9f9f9',
-        navbar: '#212429',
+        card: '#212429',
       },
     },
   },
