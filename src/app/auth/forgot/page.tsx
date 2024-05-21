@@ -1,10 +1,12 @@
-import SigninForm from '@/components/auth/SignInForm'
+'use client'
+
+import ForgotForm from '@/components/auth/ForgotForm'
 import {
-  Card,
   CardHeader,
-  CardContent,
-  CardTitle,
   CardDescription,
+  CardTitle,
+  CardContent,
+  Card,
   CardFooter,
 } from '@/components/ui/card'
 import Link from 'next/link'
@@ -12,24 +14,21 @@ import Link from 'next/link'
 const Page = () => {
   return (
     <Card className="bg-card text-light-text mx-4 border-none  md:max-w-[430px] my-16 md:my-32">
-      <CardHeader className="">
-        <CardTitle className="text-lg md:text-2xl">Sign In</CardTitle>
+      <CardHeader>
+        <CardTitle className="text-lg md:text-2xl">Get OTP</CardTitle>
         <CardDescription className="text-xs md:text-base">
-          Sign in to access your bookings and your account.
+          Enter registered E-mail to get OTP
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <SigninForm />
+        <ForgotForm />
       </CardContent>
       <CardFooter className="text-sm italic flex flex-col gap-4 items-start">
-        <h3 className="">
-          <Link href="/auth/forgot">Forgot Passsword?</Link>
-        </h3>
         <h3>
-          Don&apos;t have an account?{' '}
-          <Link href="/auth/signup" className="underline underline-offset-2">
+          Have an account
+          <Link href="/auth/signin" className="underline underline-offset-2">
             <span className="not-italic text-base mx-2 font-semibold">
-              Create one
+              Sign in?
             </span>
           </Link>
         </h3>
