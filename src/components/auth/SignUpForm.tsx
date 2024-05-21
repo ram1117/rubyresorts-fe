@@ -95,7 +95,7 @@ const SignUpForm = () => {
         inputClassName="bg-transparent mt-2"
         error={formState.errors['password2']?.join(', ')}
       />
-      <p className="my-2 text-red-500">
+      <p className="my-2 text-sm text-red-500">
         {formState.errors['_form']?.join(', ')}
       </p>
       <FormSubmit className="my-4" variant={'secondary'}></FormSubmit>

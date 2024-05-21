@@ -8,8 +8,25 @@ import {
   SheetTrigger,
   SheetClose,
 } from '../ui/sheet'
+import { getCookies } from '@/lib/cookies'
+import { API_METHODS, makeApiRequest } from '@/lib/apiservice'
+import { urlUserInfo } from '@/lib/apilinks'
+import SignInButton from './SignInButton'
+import SignOutButton from './SignOutButton'
 
-const Navbar = () => {
+const Navbar = async () => {
+  let userInfo: any
+  const apiResponse = await makeApiRequest(
+    API_METHODS.GET,
+    urlUserInfo(),
+    null,
+    await getCookies()
+  )
+  if (apiResponse.status === 401) userInfo = undefined
+  else userInfo = await apiResponse.json()
+
+  const isLoggedIn = !!userInfo
+
   return (
     <nav className="fixed inset-x-0 text-light-text z-[998] flex justify-between items-center px-4 lg:px-12 py-2">
       <Link href="/">
@@ -32,31 +49,61 @@ const Navbar = () => {
             ></ImageWrapper>
           </button>
         </SheetTrigger>
-        <SheetContent className="z-[999] bg-card text-light-text border-none">
+        <SheetContent className="z-[999] bg-card text-light-text border-none overflow-auto">
           <SheetHeader className="flex items-center">
-            <h2 className="text-lg font-semibold py-4">Hi User</h2>
+            <h2 className="text-lg font-light py-4">
+              Hi{' '}
+              <span className="font-semibold mx-2">
+                {userInfo ? userInfo.fullname : 'There'}
+              </span>
+            </h2>
           </SheetHeader>
           <ul className="flex flex-col gap-6 py-12">
-            <SheetClose asChild>
-              <Link href="/rooms" className="border-b border-dotted p-2">
-                Rooms
-              </Link>
-            </SheetClose>
-            <SheetClose asChild>
-              <Link href="/bookings" className="border-b border-dotted p-2">
-                Bookings
-              </Link>
-            </SheetClose>
-            <SheetClose asChild>
-              <Link href="/bookings" className="border-b border-dotted p-2">
-                Account
-              </Link>
-            </SheetClose>
-            <SheetClose asChild>
-              <Link href="/auth/signin" className="border-b border-dotted  p-2">
-                Sign In
-              </Link>
-            </SheetClose>
+            <li className="border-b border-dotted p-2">
+              <SheetClose asChild>
+                <Link href="/rooms">Rooms</Link>
+              </SheetClose>
+            </li>
+
+            <li className="border-b border-dotted p-2">
+              <SheetClose asChild>
+                <Link href="/availability">Availability</Link>
+              </SheetClose>
+            </li>
+
+            <li className="border-b border-dotted p-2">
+              <SheetClose asChild>
+                <Link href="/about">About Us</Link>
+              </SheetClose>
+            </li>
+
+            {isLoggedIn && (
+              <>
+                <li className="border-b border-dotted p-2">
+                  <SheetClose asChild>
+                    <Link href="/bookings">Reservations</Link>
+                  </SheetClose>
+                </li>
+
+                <li className="border-b border-dotted p-2">
+                  <SheetClose asChild>
+                    <Link href="/bookings">Account</Link>
+                  </SheetClose>
+                </li>
+                <li className="p-2 flex justify-center items-center my-6">
+                  <SheetClose asChild>
+                    <SignOutButton />
+                  </SheetClose>
+                </li>
+              </>
+            )}
+            {!isLoggedIn && (
+              <li className="p-2 flex justify-center items-center my-6">
+                <SheetClose asChild>
+                  <SignInButton />
+                </SheetClose>
+              </li>
+            )}
           </ul>
         </SheetContent>
       </Sheet>

@@ -1,8 +1,36 @@
 import { cookies } from 'next/headers'
+import { urlRefresh } from '../apilinks'
+import { API_METHODS } from '../apiservice'
 
-export const getCookies = () => {
+export const getNewAccessToken = async (refreshToken: string) => {
+  const apiresponse = await fetch(urlRefresh(), {
+    method: API_METHODS.POST,
+    body: null,
+    headers: {
+      'Content-type': 'application/json',
+      Cookie: refreshToken,
+    },
+  })
+
+  const responseData = await apiresponse.json()
+  if (!apiresponse.ok) {
+    console.error('Unable to get new access token')
+  }
+  return responseData.token
+}
+
+export const getCookies = async () => {
   const auth = cookies().get('Authentication')
   const refresh = cookies().get('Refresh')
 
-  return [`${auth?.name}=${auth?.value}`, `${refresh?.name}=${refresh?.value}`]
+  if (refresh) {
+    if (auth) {
+      return `${auth?.name}=${auth?.value}`
+    }
+
+    const newToken = await getNewAccessToken(`${refresh.name}=${refresh.value}`)
+    return `Authentication=${newToken}`
+  }
+
+  return ``
 }

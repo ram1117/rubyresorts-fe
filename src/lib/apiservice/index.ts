@@ -11,6 +11,12 @@ export const makeApiRequest = async (
   data?: any,
   cookies?: any
 ): Promise<Response> => {
+  if (method === API_METHODS.GET)
+    return await fetch(url, {
+      method,
+      headers: { 'Content-type': 'application/json', Cookie: cookies },
+    })
+
   return await fetch(url, {
     method,
     body: JSON.stringify(data),

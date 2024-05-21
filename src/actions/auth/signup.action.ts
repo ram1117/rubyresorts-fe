@@ -2,7 +2,7 @@
 
 import { SignupFormStateType } from '@/components/auth/SignUpForm'
 import { urlSignup } from '@/lib/apilinks'
-import { API_METHODS, makeApiRequest } from '@/lib/apis'
+import { API_METHODS, makeApiRequest } from '@/lib/apiservice'
 import z from 'zod'
 
 const validationSchema = z
