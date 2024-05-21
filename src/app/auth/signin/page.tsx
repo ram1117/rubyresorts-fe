@@ -22,7 +22,7 @@ const Page = () => {
         <SigninForm />
       </CardContent>
       <CardFooter className="text-sm italic flex flex-col gap-4 items-start">
-        <h3 className="">
+        <h3 className="underline underline-offset-2">
           <Link href="/auth/forgot">Forgot Passsword?</Link>
         </h3>
         <h3>

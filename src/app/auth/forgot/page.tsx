@@ -1,5 +1,3 @@
-'use client'
-
 import ForgotForm from '@/components/auth/ForgotForm'
 import {
   CardHeader,

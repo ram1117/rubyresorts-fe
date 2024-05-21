@@ -1,4 +1,4 @@
-'use form'
+'use client'
 
 import ForgotAction from '@/actions/auth/forgot.action'
 import FormSubmit from '@/atoms/FormSubmit'
