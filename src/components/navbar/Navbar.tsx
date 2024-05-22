@@ -87,7 +87,7 @@ const Navbar = async () => {
 
                 <li className="border-b border-dotted p-2">
                   <SheetClose asChild>
-                    <Link href="/bookings">Account</Link>
+                    <Link href="/account">Account</Link>
                   </SheetClose>
                 </li>
                 <li className="p-2 flex justify-center items-center my-6">
