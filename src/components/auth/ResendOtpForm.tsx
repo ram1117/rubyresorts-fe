@@ -1,20 +1,13 @@
-'use client'
-
-import ForgotAction from '@/actions/auth/forgot.action'
-import FormSubmit from '@/atoms/FormSubmit'
 import InputField from '@/atoms/InputField'
+import Timer from './Timer'
+import { ForgotFormStateType } from './ForgotForm'
 import { useEffect } from 'react'
 import { useFormState } from 'react-dom'
 import { useToast } from '../ui/use-toast'
-import { redirect } from 'next/navigation'
+import ForgotAction from '@/actions/auth/forgot.action'
 
-export interface ForgotFormStateType {
-  success: boolean
-  useremail?: string
-  errors: {
-    email?: string[]
-    _form?: string[]
-  }
+interface ResendOtpFormProps {
+  email: string
 }
 
 const initialState: ForgotFormStateType = {
@@ -22,7 +15,7 @@ const initialState: ForgotFormStateType = {
   errors: { _form: [] },
 }
 
-const ForgotForm = () => {
+const ResendOtpForm = ({ email }: ResendOtpFormProps) => {
   const { toast } = useToast()
   const [formState, formAction] = useFormState(ForgotAction, initialState)
 
@@ -32,26 +25,27 @@ const ForgotForm = () => {
         description: 'Please check your e-mail for OTP',
         variant: 'default',
       })
-      redirect(`/auth/otppage?email=${formState.useremail}`)
     }
-  }, [formState.success, formState.useremail, toast])
+  }, [formState.success, toast])
 
   return (
-    <form className="flex flex-col gap-2" action={formAction}>
+    <form className="w-full" action={formAction}>
       <InputField
-        label={'Email'}
-        name={'email'}
-        id={'email'}
-        type={'email'}
+        id="email"
+        name="email"
+        label=""
+        readonly={true}
+        inputClassName="border-none text-white bg-transparent p-0 w-max"
+        defaultValue={email}
         error={formState.errors['email']?.join(', ')}
-        inputClassName="bg-transparent mt-2"
-      />
+      ></InputField>
+
+      <Timer></Timer>
       <p className="my-2 text-sm text-red-500">
         {formState.errors['_form']?.join(', ')}
       </p>
-      <FormSubmit className="my-4" variant={'secondary'} />
     </form>
   )
 }
 
-export default ForgotForm
+export default ResendOtpForm

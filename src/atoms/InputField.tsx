@@ -13,6 +13,9 @@ interface InputFieldProps {
   labelClassName?: string
   inputClassName?: string
   error?: string
+  disabled?: boolean
+  readonly?: boolean
+  defaultValue?: string
 }
 
 const InputField = ({
@@ -27,6 +30,9 @@ const InputField = ({
   minLength = 6,
   maxLength = 200,
   error = '',
+  disabled = false,
+  readonly = false,
+  defaultValue = '',
 }: InputFieldProps) => {
   return (
     <div className={`${className}`}>
@@ -41,6 +47,9 @@ const InputField = ({
         className={`${inputClassName}`}
         minLength={minLength}
         maxLength={maxLength}
+        disabled={disabled}
+        readOnly={readonly}
+        defaultValue={defaultValue}
       ></Input>
       <p className="my-1 text-xs text-red-500">{error}</p>
     </div>

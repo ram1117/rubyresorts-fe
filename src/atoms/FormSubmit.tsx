@@ -16,6 +16,7 @@ interface FormSubmitProps {
     | null
     | undefined
   spinnerColor?: string
+  disabled?: boolean
 }
 
 const FormSubmit = ({
@@ -23,10 +24,16 @@ const FormSubmit = ({
   text = 'Submit',
   className = '',
   spinnerColor = '#212429',
+  disabled = false,
 }: FormSubmitProps) => {
   const { pending } = useFormStatus()
   return (
-    <Button variant={variant} className={`${className}`} type="submit">
+    <Button
+      variant={variant}
+      className={`${className} ${disabled ? 'opacity-40' : 'opacity:100'}`}
+      type="submit"
+      disabled={disabled}
+    >
       {pending ? <LoadingSpinner currentColor={spinnerColor} /> : text}
     </Button>
   )

@@ -10,16 +10,21 @@ export const makeApiRequest = async (
   url: string,
   data?: any,
   cookies?: any
-): Promise<Response> => {
-  if (method === API_METHODS.GET)
+) => {
+  try {
+    if (method === API_METHODS.GET)
+      return await fetch(url, {
+        method,
+        headers: { 'Content-type': 'application/json', Cookie: cookies },
+      })
+
     return await fetch(url, {
       method,
+      body: JSON.stringify(data),
       headers: { 'Content-type': 'application/json', Cookie: cookies },
     })
-
-  return await fetch(url, {
-    method,
-    body: JSON.stringify(data),
-    headers: { 'Content-type': 'application/json', Cookie: cookies },
-  })
+  } catch (error) {
+    if (error instanceof Error) console.error(error.message)
+    console.error('Error fetching data')
+  }
 }

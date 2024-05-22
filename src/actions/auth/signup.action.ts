@@ -58,8 +58,8 @@ const SignupAction = async (
       validate.data
     )
 
-    if (!response.ok) {
-      const error = await response.json()
+    if (!response?.ok) {
+      const error = await response?.json()
       return {
         errors: { _form: [`${error.message}. Code:${error.statusCode} `] },
       }

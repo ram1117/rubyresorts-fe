@@ -28,8 +28,8 @@ const ForgotAction = async (
   )
 
   try {
-    const responseData = await response.json()
-    if (!response.ok) {
+    const responseData = await response?.json()
+    if (!response?.ok) {
       return { success: false, errors: { _form: [responseData.error] } }
     }
   } catch (error) {
@@ -38,7 +38,7 @@ const ForgotAction = async (
     else return { success: false, errors: { _form: ['Something went wrong.'] } }
   }
 
-  return { success: true, errors: {} }
+  return { success: true, errors: {}, useremail: validate.data.email }
 }
 
 export default ForgotAction

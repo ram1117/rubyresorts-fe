@@ -17,7 +17,7 @@ const SignoutAction = async () => {
     await getCookies()
   )
 
-  if (!response.ok) {
+  if (!response?.ok) {
     return 'error signing out'
   }
   cookies().delete('Authentication')

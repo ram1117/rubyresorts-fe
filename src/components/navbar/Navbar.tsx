@@ -22,8 +22,8 @@ const Navbar = async () => {
     null,
     await getCookies()
   )
-  if (apiResponse.status === 401) userInfo = undefined
-  else userInfo = await apiResponse.json()
+  if (apiResponse?.status === 401) userInfo = undefined
+  else userInfo = await apiResponse?.json()
 
   const isLoggedIn = !!userInfo
 

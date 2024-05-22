@@ -31,9 +31,9 @@ const SigninAction = async (
       validate.data
     )
 
-    const responseData = await response.json()
+    const responseData = await response?.json()
 
-    if (!response.ok) {
+    if (!response?.ok) {
       return { errors: { _form: [`${responseData.message}`] } }
     }
 
