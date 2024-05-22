@@ -18,16 +18,23 @@ export default function Home() {
           <h3> Escape to the tropical paradise.</h3>
           <h3> Discover the Ultimate Luxury Resort Experience</h3>
         </div>
-        <Button
-          asChild
-          variant={'outline'}
-          className="w-max px-12 my-12 bg-transparent tracking-wider uppercase"
-        >
-          <Link href="booking">Check Availability</Link>
-        </Button>
+        <div className="my-12 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-[400px] md:w-11/12 lg:w-2/5">
+          <Button
+            asChild
+            variant={'outline'}
+            className="w-full bg-transparent tracking-wider uppercase"
+          >
+            <Link href="/availability">Check Availability</Link>
+          </Button>
+          <Button
+            asChild
+            variant={'outline'}
+            className="w-full bg-transparent tracking-wider uppercase"
+          >
+            <Link href="/rooms">View Our Rooms</Link>
+          </Button>
+        </div>
       </section>
-
-      {/* <Availability /> */}
     </main>
   )
 }
