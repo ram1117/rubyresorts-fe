@@ -8,7 +8,6 @@ const Timer = () => {
   const [time, setTime] = useState(TIME_VALUE)
 
   useEffect(() => {
-    console.log(startTimer)
     if (startTimer) {
       const timer = setInterval(() => {
         setTime((time) => {

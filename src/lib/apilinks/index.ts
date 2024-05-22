@@ -9,5 +9,6 @@ export const urlSignout = () => `${AUTH_BASEURL}/auth/signout`
 export const urlRefresh = () => `${AUTH_BASEURL}/auth/refresh`
 export const urlForgot = () => `${AUTH_BASEURL}/auth/forgotpassword`
 export const urlSubmitOtp = () => `${AUTH_BASEURL}/auth/submitotp`
+export const urlUpdatePassword = () => `${AUTH_BASEURL}/auth/updatepassword`
 
 export const urlUserInfo = () => `${AUTH_BASEURL}/user`

@@ -8,8 +8,6 @@ import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 
 const SignoutAction = async () => {
-  console.log('signin out')
-
   const response = await makeApiRequest(
     API_METHODS.POST,
     urlSignout(),

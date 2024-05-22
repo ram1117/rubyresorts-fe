@@ -28,7 +28,7 @@ const Page = () => {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <OtpForm></OtpForm>
+        <OtpForm email={email}></OtpForm>
       </CardContent>
       <CardFooter>
         <ResendOtpForm email={email}></ResendOtpForm>
