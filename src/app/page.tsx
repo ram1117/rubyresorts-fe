@@ -1,4 +1,7 @@
+import AttractionSection from '@/components/mainpage/AttractionSection'
+import HighlightSection from '@/components/mainpage/HighlightSection'
 import RoomSection from '@/components/mainpage/RoomSection'
+import SubscribeSection from '@/components/mainpage/SubscribeSection'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 
@@ -28,7 +31,11 @@ export default function Home() {
           </Button>
         </div>
       </section>
+      <AttractionSection />
       <RoomSection />
+      <HighlightSection />
+
+      <SubscribeSection />
     </main>
   )
 }

@@ -28,7 +28,7 @@ const Navbar = async () => {
   const isLoggedIn = !!userInfo
 
   return (
-    <nav className="fixed top-0 inset-x-0 text-dark-text z-[998] flex justify-between items-center px-4 lg:px-12 py-2">
+    <nav className="backdrop-blur-md fixed top-0 inset-x-0 text-dark-text z-[998] flex justify-between items-center px-4 lg:px-12 py-2">
       <Link href="/">
         <div className="flex flex-col items-center justify-center gap-0">
           <h2 className="tracking-[.1em] leading-4 text-lg font-bold uppercase">
@@ -49,7 +49,7 @@ const Navbar = async () => {
             ></ImageWrapper>
           </button>
         </SheetTrigger>
-        <SheetContent className="z-[999] bg-card text-light-text border-none overflow-auto">
+        <SheetContent className="z-[999] text-dark-text border-none overflow-auto">
           <SheetHeader className="flex items-center">
             <h2 className="text-lg font-light py-4">
               Hi{' '}

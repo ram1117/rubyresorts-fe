@@ -20,6 +20,8 @@ const config = {
     extend: {
       backgroundImage: {
         'main-bg': 'url(/bg.jpg)',
+        'subscribe-bg': 'url(/pictures/subscribe.jpg)',
+        'hotel-bg': 'url(/pictures/hotel.jpg)',
       },
       keyframes: {
         'accordion-down': {
@@ -43,6 +45,7 @@ const config = {
         'light-text': '#f9f9f9',
         'dark-text': '#06170e',
         card: '#06170e',
+        'section-light': '#f7f7f7',
       },
     },
   },
