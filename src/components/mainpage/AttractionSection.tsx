@@ -5,7 +5,7 @@ import TownImage from '@public/pictures/town.jpg'
 
 const AttractionSection = () => {
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center py-4">
+    <section className="min-h-screen flex flex-col justify-center items-center py-4 bg-section-light">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-dark-text px-4 md:px-12 max-w-[1440px]">
         <div className="flex flex-col gap-4 py-4">
           <ImageWrapper

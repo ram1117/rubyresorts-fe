@@ -42,7 +42,7 @@ const config = {
         playfair: 'var(--var-playfair)',
       },
       colors: {
-        'light-text': '#f9f9f9',
+        'light-text': '#f7f7f7',
         'dark-text': '#06170e',
         card: '#06170e',
         'section-light': '#f7f7f7',
