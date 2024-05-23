@@ -1,6 +1,6 @@
 const AUTH_BASEURL = process.env.API_AUTH_URL
 const AUTH_BASEURL_CLIENT = process.env.NEXT_PUBLIC_API_AUTH_URL
-// const ROOM_BASEURL = process.env.API_ROOMS_URL
+const ROOM_BASEURL = process.env.API_ROOMS_URL
 // const RESERVATION_BASEURL = process.env.API_RESERVATION_URL
 // const PRICE_BASEURL = process.env.API_PRICE_URL
 
@@ -13,5 +13,6 @@ export const urlSubmitOtp = () => `${AUTH_BASEURL}/auth/submitotp`
 export const urlUpdatePassword = () => `${AUTH_BASEURL}/auth/updatepassword`
 export const urlVerifyEmail = () => `${AUTH_BASEURL_CLIENT}/auth/verifyemail`
 export const urlSendVerification = () => `${AUTH_BASEURL}/auth/sendverification`
-
 export const urlUserInfo = () => `${AUTH_BASEURL}/user`
+
+export const urlGetRooms = () => `${ROOM_BASEURL}/rooms`

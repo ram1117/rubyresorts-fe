@@ -4,7 +4,7 @@ interface AuthLayoutProps {
 
 const AuthLayout = ({ children }: AuthLayoutProps) => {
   return (
-    <section className="w-full min-h-screen flex flex-col items-center justify-center">
+    <section className="w-full min-h-[90vh] flex flex-col items-center justify-center">
       {children}
     </section>
   )

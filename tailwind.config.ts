@@ -41,7 +41,8 @@ const config = {
       },
       colors: {
         'light-text': '#f9f9f9',
-        card: '#212429',
+        'dark-text': '#06170e',
+        card: '#06170e',
       },
     },
   },
