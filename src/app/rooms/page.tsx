@@ -1,3 +1,4 @@
+import DataNotAvailable from '@/atoms/DataNotAvailable'
 import RoomItem from '@/components/roomspage/RoomItem'
 import { urlGetRooms } from '@/lib/apilinks'
 import { API_METHODS, makeApiRequest } from '@/lib/apiservice'
@@ -8,11 +9,7 @@ const Page = async () => {
   const response = await makeApiRequest(API_METHODS.GET, urlGetRooms())
 
   if (!response?.ok) {
-    return (
-      <h1 className="text-2xl italic my-10 text-center">
-        Unable to get data for this page
-      </h1>
-    )
+    return <DataNotAvailable />
   }
 
   const roomsData = await response?.json()

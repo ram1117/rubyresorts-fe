@@ -10,6 +10,8 @@ import {
 import { API_METHODS, makeApiRequest } from '@/lib/apiservice'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
+import DataNotAvailable from '@/atoms/DataNotAvailable'
+import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table'
 
 export const revalidate = 3600
 
@@ -20,14 +22,9 @@ const Page = async ({ params }: { params: { roomid: string } }) => {
   )
 
   if (!response?.ok) {
-    return (
-      <h1 className="text-2xl italic my-10 text-center">
-        Unable to get data for this page
-      </h1>
-    )
+    return <DataNotAvailable />
   }
   const roomData = await response?.json()
-  console.log(roomData)
 
   return (
     <div className="mx-4 mt-8 lg:mt-16 border-2 px-6 md:px-12 max-w-[1440px] w-11/12 mx-auto">
@@ -42,7 +39,7 @@ const Page = async ({ params }: { params: { roomid: string } }) => {
                 <ImageWrapper
                   src={image}
                   alt="room images"
-                  containerStyle="w-full aspect-[3/2]"
+                  containerStyle="w-full aspect-square"
                   sizes="(max-width:768px) 90vw, 40vw"
                 ></ImageWrapper>
               </CarouselItem>
@@ -59,16 +56,36 @@ const Page = async ({ params }: { params: { roomid: string } }) => {
               <li key={item.id}>{item.name}</li>
             ))}
           </ul>
-          <p className="my-1 text-base">
-            Prices start from:{' '}
-            <span className="text-xl underline underline-offset-4 font-bold">
-              $ {roomData.price.baserate}
-            </span>
-            <span className="mx-2 text-sm italic font-light">/night</span>
-          </p>
-          <p className="text-xs font-light italic">
-            * Prices may vary depending on availability, season.
-          </p>
+
+          <Table className="my-4 lg:my-8">
+            <TableBody>
+              <TableRow>
+                <TableCell colSpan={3} className="text-lg">
+                  Maximum Occupancy
+                </TableCell>
+                <TableCell className="flex items-center">
+                  {' '}
+                  <span className="text-xl underline underline-offset-4 font-bold">
+                    {roomData.occupancy}
+                  </span>
+                </TableCell>
+              </TableRow>
+
+              <TableRow>
+                <TableCell colSpan={3} className="text-lg">
+                  Prices start from
+                </TableCell>
+                <TableCell className="flex items-center">
+                  {' '}
+                  <span className="text-xl underline underline-offset-4 font-bold">
+                    $ {roomData.price.baserate}
+                  </span>
+                  <span className="mx-2 text-sm italic font-light">/night</span>
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+
           <Button
             asChild
             variant={'default'}
