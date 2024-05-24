@@ -16,3 +16,4 @@ export const urlSendVerification = () => `${AUTH_BASEURL}/auth/sendverification`
 export const urlUserInfo = () => `${AUTH_BASEURL}/user`
 
 export const urlGetRooms = () => `${ROOM_BASEURL}/rooms`
+export const urlGetRoomById = (id: string) => `${ROOM_BASEURL}/rooms/${id}`

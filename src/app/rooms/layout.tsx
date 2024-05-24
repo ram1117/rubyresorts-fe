@@ -4,7 +4,9 @@ interface LayoutProps {
 
 const RoomsLayout = ({ children }: LayoutProps) => {
   return (
-    <section className="w-full min-h-screen mt-16 border">{children}</section>
+    <section className="w-full min-h-screen pt-16 text-dark-text bg-section-light">
+      {children}
+    </section>
   )
 }
 

@@ -21,13 +21,20 @@ export default function Home() {
           <h3> Discover Serenity at Our Peaks!</h3>
           <h3> Discover the Ultimate Luxury Resort Experience.</h3>
         </div>
-        <div className="my-12 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-[400px] md:w-11/12 lg:w-2/5">
+        <div className="my-12 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-[300px] sm:max-w-[500px] md:w-11/12 lg:w-3/5">
           <Button
             asChild
             variant={'outline'}
             className="w-full bg-transparent tracking-wider uppercase"
           >
             <Link href="/availability">Check Availability</Link>
+          </Button>
+          <Button
+            asChild
+            variant={'outline'}
+            className="w-full bg-transparent tracking-wider uppercase"
+          >
+            <Link href="/rooms">Check Accommodations</Link>
           </Button>
         </div>
       </section>
