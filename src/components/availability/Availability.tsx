@@ -3,7 +3,7 @@
 import AvailabilityAction from '@/actions/availability/availability.action'
 import { DateRangePicker } from '../ui/daterangepicker'
 import { DateRange } from 'react-day-picker'
-import { ChangeEvent, useEffect, useState } from 'react'
+import { ChangeEvent, useState } from 'react'
 import { addDays } from 'date-fns'
 import FormSubmit from '@/atoms/FormSubmit'
 import {
@@ -17,11 +17,11 @@ import {
 } from '../ui/select'
 import { Input } from '../ui/input'
 import { useFormState } from 'react-dom'
-import ImageWrapper from '@/atoms/ImageWrapper'
-import { Card } from '../ui/card'
-import { Table, TableBody, TableCell, TableRow } from '../ui/table'
+import RoomDetails from './RoomDetails'
+import { Label } from '../ui/label'
 
 interface AvailabilityProps {
+  loggedIn: boolean
   roomsData: any
 }
 
@@ -31,6 +31,7 @@ export interface AvailabilityFormStateType {
   errors: {
     roomtype?: string[]
     people?: string[]
+    no_of_rooms?: string[]
     _form?: string[]
   }
 }
@@ -41,7 +42,7 @@ const initialState: AvailabilityFormStateType = {
   },
 }
 
-const Availability = ({ roomsData }: AvailabilityProps) => {
+const Availability = ({ roomsData, loggedIn }: AvailabilityProps) => {
   const [date, setDate] = useState<DateRange | undefined>({
     from: new Date(),
     to: addDays(new Date(), 7),
@@ -62,32 +63,35 @@ const Availability = ({ roomsData }: AvailabilityProps) => {
     }
   }
 
-  const bindedAction = AvailabilityAction.bind(null, date, totalrooms)
+  const bindedAction = AvailabilityAction.bind(null, date)
 
   const [formState, formAction] = useFormState(bindedAction, initialState)
-
-  useEffect(() => {
-    console.log(formState.data)
-  }, [formState])
 
   return (
     <section className="px-4 md:px-12 mt-6 py-4 mx-auto ">
       <h2 className="my-6 text-xl uppercase font-medium text-center">
         Check Availability
       </h2>
-      <div className="flex flex-col gap-4 lg:gap-8 my-4">
-        <div className="p-4">
-          <form
-            className="flex flex-col lg:flex-row gap-4 mx-auto items-center max-w-[1024px]"
-            action={formAction}
-          >
-            <DateRangePicker
-              date={date}
-              setDate={setDate}
-              buttonStyle="bg-transparent"
-              className="border border-card w-full"
-            ></DateRangePicker>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 my-4 mx-auto max-w-[1300px]">
+        <div className="w-full">
+          <form className="flex flex-col gap-4 items-start" action={formAction}>
             <div className="w-full">
+              <p className="text-sm uppercase tracking-wider">Pick dates</p>
+              <DateRangePicker
+                date={date}
+                setDate={setDate}
+                buttonStyle="bg-transparent"
+                className="border border-card w-full"
+              ></DateRangePicker>
+            </div>
+
+            <div className="w-full">
+              <Label
+                htmlFor="roomtype"
+                className="text-sm uppercase tracking-wider"
+              >
+                Select Room
+              </Label>
               <Select
                 name="roomtype"
                 onValueChange={(e) => {
@@ -103,7 +107,7 @@ const Availability = ({ roomsData }: AvailabilityProps) => {
                 <SelectTrigger className="w-full bg-transparent border border-card rounded-none">
                   <SelectValue placeholder="Select a room" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent id="roomtype">
                   <SelectGroup>
                     <SelectLabel>Room</SelectLabel>
                     {roomsData.map((item: any) => (
@@ -119,12 +123,17 @@ const Availability = ({ roomsData }: AvailabilityProps) => {
               </p>
             </div>
             <div className="w-full">
+              <Label
+                htmlFor="people"
+                className="text-sm uppercase tracking-wider"
+              >
+                Guests
+              </Label>
               <Input
+                id="people"
                 onChange={handleChange}
                 type="number"
-                max={10}
-                min={1}
-                placeholder="No of People"
+                placeholder="No of Guests"
                 name="people"
                 className="w-full bg-transparent rounded-none border border-card"
               />
@@ -132,81 +141,51 @@ const Availability = ({ roomsData }: AvailabilityProps) => {
                 {formState.errors['people']?.join(', ')}
               </p>
             </div>
-
-            <div className="w-full text-left font-light">
-              No. of rooms: <span className="font-bold">{totalrooms}</span>
+            <div className="w-full">
+              <Label
+                htmlFor="no_of_rooms"
+                className="text-sm uppercase tracking-wider"
+              >
+                Rooms
+              </Label>
+              <Input
+                name="no_of_rooms"
+                type="number"
+                placeholder="No. of rooms"
+                min={totalrooms}
+                defaultValue={totalrooms}
+                id="no_of_rooms"
+                className="w-full bg-transparent rounded-none border border-card"
+              />
+              <p className="my-1 text-red-500 text-sm">
+                {formState.errors['no_of_rooms']?.join(', ')}
+              </p>
             </div>
-            <p className="my-4 text-red-500 text-sm">
-              {formState.errors['_form']?.join(', ')}
-            </p>
+
             <FormSubmit
               text="Check Availability"
               variant={'outline'}
               className="uppercase min-w-[200px] bg-card text-light-text border border-card"
             ></FormSubmit>
+            <p className="my-4 text-red-500 text-sm">
+              {formState.errors['_form']?.join(', ')}
+            </p>
           </form>
         </div>
 
         {formState.success && (
-          <Card className="bg-transparent border-card grid grid-cols-1 md:grid-cols-2 gap-4 p-4 max-w-[1024px] w-11/12 md:w-4/5 mx-auto">
-            <ImageWrapper
-              src={roomtype.images[0]}
-              alt="room image"
-              containerStyle="w-full aspect-square"
-            ></ImageWrapper>
-            <div className="flex flex-col gap-2">
-              <h3 className="font-playfair text-2xl border-b pb-2">
-                {roomtype.name}
-              </h3>
-              {!formState.data.available && (
-                <h3 className="italic text-lg">
-                  Unfortunately, there is no availability for the given dates.
-                  Please try again with different dates and room types
-                </h3>
-              )}
-              {formState.data.available && (
-                <Table className="my-4 lg:my-8">
-                  <TableBody>
-                    <TableRow>
-                      <TableCell colSpan={3} className="text-base font-light">
-                        Per night
-                      </TableCell>
-                      <TableCell className="flex items-center">
-                        {' '}
-                        <span className="text-base underline underline-offset-4 font-medium">
-                          $ {formState.data.prices.perday}
-                        </span>
-                      </TableCell>
-                    </TableRow>
-
-                    <TableRow>
-                      <TableCell colSpan={3} className="text-base font-light">
-                        Total per room
-                      </TableCell>
-                      <TableCell className="flex items-center">
-                        {' '}
-                        <span className="text-base underline underline-offset-4 font-medium">
-                          $ {formState.data.prices.perroom}
-                        </span>
-                      </TableCell>
-                    </TableRow>
-
-                    <TableRow>
-                      <TableCell colSpan={3} className="text-base font-light">
-                        Grand Total
-                      </TableCell>
-                      <TableCell className="flex items-center">
-                        {' '}
-                        <span className="text-base underline underline-offset-4 font-medium">
-                          $ {formState.data.prices.grand}
-                        </span>
-                      </TableCell>
-                    </TableRow>
-                  </TableBody>
-                </Table>
-              )}
-            </div>
-          </Card>
+          <RoomDetails
+            loggedIn={loggedIn}
+            roomtype={roomtype}
+            availabilityData={formState.data}
+            bookingData={{
+              fromdate: date?.from,
+              todate: date?.to,
+              no_of_rooms: totalrooms,
+              guest_count: totalpeople,
+              roomtype: roomtype._id,
+            }}
+          ></RoomDetails>
         )}
       </div>
     </section>

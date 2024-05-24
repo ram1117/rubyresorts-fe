@@ -8,11 +8,11 @@ import z from 'zod'
 const validationSchema = z.object({
   roomtype: z.string().min(1, { message: 'Please fill this field' }),
   people: z.coerce.number().min(1),
+  no_of_rooms: z.coerce.number().min(1),
 })
 
 const AvailabilityAction = async (
   date: DateRange | undefined,
-  totalrooms: number,
   formState: AvailabilityFormStateType,
   formData: FormData
 ): Promise<AvailabilityFormStateType> => {
@@ -32,7 +32,7 @@ const AvailabilityAction = async (
       {
         fromdate: date?.from,
         todate: date?.to,
-        no_of_rooms: totalrooms,
+        no_of_rooms: validate.data.no_of_rooms,
         roomtype: validate.data.roomtype,
       }
     )

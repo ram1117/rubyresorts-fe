@@ -34,3 +34,8 @@ export const getCookies = async () => {
 
   return ``
 }
+
+export const isLoggedIn = () => {
+  const refresh = cookies().get('Refresh')
+  return !!refresh
+}

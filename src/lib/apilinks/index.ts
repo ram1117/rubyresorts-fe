@@ -1,7 +1,7 @@
 const AUTH_BASEURL = process.env.API_AUTH_URL
 const AUTH_BASEURL_CLIENT = process.env.NEXT_PUBLIC_API_AUTH_URL
 const ROOM_BASEURL = process.env.API_ROOMS_URL
-// const RESERVATION_BASEURL = process.env.API_RESERVATION_URL
+const RESERVATION_BASEURL = process.env.API_RESERVATION_URL
 const PRICE_BASEURL = process.env.API_PRICE_URL
 
 export const urlSignup = () => `${AUTH_BASEURL}/auth/signup`
@@ -19,3 +19,4 @@ export const urlGetRooms = () => `${ROOM_BASEURL}/rooms`
 export const urlGetRoomById = (id: string) => `${ROOM_BASEURL}/rooms/${id}`
 
 export const urlGetAvailability = () => `${PRICE_BASEURL}/availability`
+export const urlCreateBooking = () => `${RESERVATION_BASEURL}`

@@ -15,6 +15,7 @@ import {
 } from '@/components/ui/popover'
 
 interface DateRangePickerProps {
+  id?: string
   className?: string
   buttonStyle?: string
   date: DateRange | undefined
