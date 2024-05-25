@@ -20,3 +20,6 @@ export const urlGetRoomById = (id: string) => `${ROOM_BASEURL}/rooms/${id}`
 
 export const urlGetAvailability = () => `${PRICE_BASEURL}/availability`
 export const urlCreateBooking = () => `${RESERVATION_BASEURL}`
+export const urlGetBookings = () => `${RESERVATION_BASEURL}`
+export const urlGetOneBooking = (id: string) => `${RESERVATION_BASEURL}/${id}`
+export const urlCancelBooking = (id: string) => `${RESERVATION_BASEURL}/${id}`

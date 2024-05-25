@@ -30,7 +30,7 @@ const FormSubmit = ({
   return (
     <Button
       variant={variant}
-      className={`${className} ${disabled ? 'opacity-40' : 'opacity:100'}`}
+      className={`${className} ${disabled ? 'opacity-40' : 'opacity:100'} min-w-[120px]`}
       type="submit"
       disabled={disabled}
     >

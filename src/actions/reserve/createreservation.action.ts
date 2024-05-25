@@ -46,8 +46,7 @@ const CreateReservationAction = async (
     return { success: false, errors: { _form: ['Something went wrong'] } }
   }
 
-  redirect(`/reservations/${reservationId}`)
-  return { success: true, errors: {} }
+  redirect(`/reservations/payments/${reservationId}`)
 }
 
 export default CreateReservationAction
