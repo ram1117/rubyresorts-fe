@@ -3,6 +3,7 @@ const AUTH_BASEURL_CLIENT = process.env.NEXT_PUBLIC_API_AUTH_URL
 const ROOM_BASEURL = process.env.API_ROOMS_URL
 const RESERVATION_BASEURL = process.env.API_RESERVATION_URL
 const PRICE_BASEURL = process.env.API_PRICE_URL
+const PAYMENT_BASEURL = process.env.API_PAYMENT_URL
 
 export const urlSignup = () => `${AUTH_BASEURL}/auth/signup`
 export const urlSignin = () => `${AUTH_BASEURL}/auth/signin`
@@ -23,3 +24,6 @@ export const urlCreateBooking = () => `${RESERVATION_BASEURL}`
 export const urlGetBookings = () => `${RESERVATION_BASEURL}`
 export const urlGetOneBooking = (id: string) => `${RESERVATION_BASEURL}/${id}`
 export const urlCancelBooking = (id: string) => `${RESERVATION_BASEURL}/${id}`
+
+export const urlGetPaymentIntent = (id: string) =>
+  `${PAYMENT_BASEURL}/payments/${id}`
