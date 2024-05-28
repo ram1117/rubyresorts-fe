@@ -72,7 +72,7 @@ const NavbarContent = ({ isLoggedIn, userInfo }: NavbarContentProps) => {
 
             <li className="border-b border-dotted p-2">
               <SheetClose asChild>
-                <Link href="/about">About Us</Link>
+                <Link href="/">About Us</Link>
               </SheetClose>
             </li>
 
