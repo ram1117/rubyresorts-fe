@@ -152,7 +152,11 @@ const ConfirmationDialog = ({
             </Button>
           </DialogClose>
           <form action={formAction}>
-            <FormSubmit variant={'default'} text="Reserve"></FormSubmit>
+            <FormSubmit
+              variant={'default'}
+              spinnerColor="#f9f9f9"
+              text="Reserve"
+            ></FormSubmit>
           </form>
         </DialogFooter>
         <p className="text-sm text-red-800">

@@ -4,10 +4,7 @@ import FormSubmit from '@/atoms/FormSubmit'
 const SendVerificationForm = () => {
   return (
     <form action={SendVerificationAction}>
-      <FormSubmit
-        text="Send Verification Email"
-        variant={'secondary'}
-      ></FormSubmit>
+      <FormSubmit text="Send Email" variant={'secondary'}></FormSubmit>
     </form>
   )
 }
