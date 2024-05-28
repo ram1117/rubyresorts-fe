@@ -3,6 +3,7 @@
 import SigninAction from '@/actions/auth/signin.action'
 import FormSubmit from '@/atoms/FormSubmit'
 import InputField from '@/atoms/InputField'
+import { useSearchParams } from 'next/navigation'
 import { useFormState } from 'react-dom'
 
 export interface SinginFormStateType {
@@ -16,7 +17,11 @@ export interface SinginFormStateType {
 const initialState: SinginFormStateType = { errors: { _form: [] } }
 
 const SigninForm = () => {
-  const [formState, formAction] = useFormState(SigninAction, initialState)
+  const searchParams = useSearchParams()
+  const nextpage = searchParams.get('next')
+
+  const bindedAction = SigninAction.bind(null, nextpage || '/')
+  const [formState, formAction] = useFormState(bindedAction, initialState)
 
   return (
     <form className="flex flex-col gap-2" action={formAction}>

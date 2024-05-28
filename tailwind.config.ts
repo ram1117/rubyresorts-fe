@@ -20,6 +20,8 @@ const config = {
     extend: {
       backgroundImage: {
         'main-bg': 'url(/bg.jpg)',
+        'subscribe-bg': 'url(/pictures/subscribe.jpg)',
+        'hotel-bg': 'url(/pictures/hotel.jpg)',
       },
       keyframes: {
         'accordion-down': {
@@ -40,8 +42,10 @@ const config = {
         playfair: 'var(--var-playfair)',
       },
       colors: {
-        'light-text': '#f9f9f9',
-        card: '#212429',
+        'light-text': '#f7f7f7',
+        'dark-text': '#06170e',
+        card: '#06170e',
+        'section-light': '#f7f7f7',
       },
     },
   },

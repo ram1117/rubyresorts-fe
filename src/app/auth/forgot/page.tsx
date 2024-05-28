@@ -11,7 +11,7 @@ import Link from 'next/link'
 
 const Page = () => {
   return (
-    <Card className="bg-card text-light-text mx-4 border-none  md:max-w-[430px] my-16 md:my-32">
+    <Card className="bg-card text-light-text mx-4 border-none w-11/12 md:min-w-[350px] md:max-w-[430px] my-16 md:my-32">
       <CardHeader>
         <CardTitle className="text-lg md:text-2xl">Get OTP</CardTitle>
         <CardDescription className="text-xs md:text-base">

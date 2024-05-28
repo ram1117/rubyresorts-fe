@@ -13,6 +13,7 @@ const validationSchema = z.object({
 })
 
 const SigninAction = async (
+  nextpage: string,
   formState: SinginFormStateType,
   formData: FormData
 ): Promise<SinginFormStateType> => {
@@ -59,7 +60,7 @@ const SigninAction = async (
     return { errors: { _form: ['Something went wrong.'] } }
   }
 
-  redirect('/')
+  redirect(nextpage)
 }
 
 export default SigninAction

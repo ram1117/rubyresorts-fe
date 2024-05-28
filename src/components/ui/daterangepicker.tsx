@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import { CalendarIcon } from '@radix-ui/react-icons'
-import { addDays, format } from 'date-fns'
+import { format } from 'date-fns'
 import { DateRange } from 'react-day-picker'
 
 import { cn } from '@/lib/utils'
@@ -15,26 +15,19 @@ import {
 } from '@/components/ui/popover'
 
 interface DateRangePickerProps {
+  id?: string
   className?: string
   buttonStyle?: string
+  date: DateRange | undefined
+  setDate: React.Dispatch<React.SetStateAction<DateRange | undefined>>
 }
 
 export function DateRangePicker({
   className = '',
   buttonStyle = '',
+  date,
+  setDate,
 }: DateRangePickerProps) {
-  const [screenWidth, setScreenWidth] = React.useState(768)
-  const [date, setDate] = React.useState<DateRange | undefined>({
-    from: new Date(),
-    to: addDays(new Date(), 7),
-  })
-
-  React.useEffect(() => {
-    setScreenWidth(window.innerWidth)
-  }, [])
-
-  const isMobile = screenWidth <= 768
-
   return (
     <div className={cn('grid gap-2 w-max', className)}>
       <Popover>
@@ -70,7 +63,7 @@ export function DateRangePicker({
             defaultMonth={date?.from}
             selected={date}
             onSelect={setDate}
-            numberOfMonths={isMobile ? 1 : 2}
+            numberOfMonths={2}
             disabled={(date) => date < new Date()}
           />
         </PopoverContent>

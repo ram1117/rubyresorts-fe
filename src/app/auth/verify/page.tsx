@@ -49,7 +49,7 @@ const Page = () => {
   }, [router, toast, token])
 
   return (
-    <Card className="bg-card text-light-text mx-4 border-none md:max-w-[630px] w-11/12 md:w-3/5 my-16 md:my-32">
+    <Card className="bg-card text-light-text mx-4 border-none w-11/12 md:max-w-[630px] w-11/12 md:w-3/5 my-16 md:my-32">
       <CardHeader className="">
         <CardTitle className="text-lg md:text-2xl">
           Verifying E-mail address
