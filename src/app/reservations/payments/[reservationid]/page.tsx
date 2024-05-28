@@ -18,7 +18,12 @@ const Page = async ({ params }: { params: { reservationid: string } }) => {
   }
 
   const data = await response?.json()
-  return <StripeCheckout clientSecret={data.secret}></StripeCheckout>
+  return (
+    <StripeCheckout
+      clientSecret={data.secret}
+      totalAmount={data.reservation.total}
+    ></StripeCheckout>
+  )
 }
 
 export default Page

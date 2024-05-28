@@ -4,7 +4,6 @@ import { CreateReservationFormStateType } from '@/components/availability/Confir
 import { urlCreateBooking } from '@/lib/apilinks'
 import { API_METHODS, makeApiRequest } from '@/lib/apiservice'
 import { getCookies } from '@/lib/cookies'
-import { redirect } from 'next/navigation'
 import z from 'zod'
 
 const validationSchema = z.object({
@@ -46,7 +45,7 @@ const CreateReservationAction = async (
     return { success: false, errors: { _form: ['Something went wrong'] } }
   }
 
-  redirect(`/reservations/payments/${reservationId}`)
+  return { success: true, errors: {}, data: reservationId }
 }
 
 export default CreateReservationAction

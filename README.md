@@ -2,13 +2,13 @@
 
 ## Description
 
-**Ruby Resorts** is a NextJS14 page for Ruby Resorts
+**Ruby Resorts** is a NextJS14 page for Ruby Resorts, with full authentication implemented in NestJs backend, payment integration with Stripe. User can book reservations, check availability with dates and pay for their reservations with date and can cancel the reservation.
 
 Tech stack - Typescript, TailwindCSS
 
 ### Live Demo
 
-[Live Demo on Vercel](TBA)
+[Live Demo on Vercel](https://rubyresorts-fe.vercel.app/)
 
 ## Getting Started
 
@@ -32,15 +32,6 @@ Tech stack - Typescript, TailwindCSS
   ```
   npm install
   ```
-
-### Environment Variables
-
-Create a `.env.local` file at the root of the project and add the following environment variables
-
-```
-NEXT_PUBLIC_API_BASE_URL="< YOUR BACKEND_SERVER_URL>"
-
-```
 
 ### Executing program
 

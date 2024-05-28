@@ -15,6 +15,8 @@ import { Button } from '../ui/button'
 import { format } from 'date-fns'
 import CreateReservationAction from '@/actions/reserve/createreservation.action'
 import { useFormState } from 'react-dom'
+import { useEffect } from 'react'
+import { redirect } from 'next/navigation'
 
 interface ConfirmationDialogProps {
   loggedIn: boolean
@@ -54,8 +56,12 @@ const ConfirmationDialog = ({
   finalprice,
 }: ConfirmationDialogProps) => {
   const bindedAction = CreateReservationAction.bind(null, bookingData)
-
   const [formState, formAction] = useFormState(bindedAction, initialState)
+  useEffect(() => {
+    if (formState.success) {
+      redirect(`/reservations/payments/${formState.data}`)
+    }
+  }, [formState.success, formState.data])
 
   return (
     <Dialog>
@@ -146,7 +152,11 @@ const ConfirmationDialog = ({
             </Button>
           </DialogClose>
           <form action={formAction}>
-            <FormSubmit variant={'default'} text="Reserve"></FormSubmit>
+            <FormSubmit
+              variant={'default'}
+              spinnerColor="#f9f9f9"
+              text="Reserve"
+            ></FormSubmit>
           </form>
         </DialogFooter>
         <p className="text-sm text-red-800">

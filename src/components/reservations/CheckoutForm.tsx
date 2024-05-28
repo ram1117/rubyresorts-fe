@@ -44,6 +44,9 @@ const CheckoutForm = ({ clientSecret }: CheckoutFormProps) => {
     e.preventDefault()
 
     if (!stripe || !elements) {
+      setMessage(
+        'This is a demo Application. Real payment using Stripe is implemented, but not availble at this particular moment'
+      )
       return
     }
 
